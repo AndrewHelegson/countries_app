@@ -38,7 +38,6 @@ export const CountryPage = () => {
         ← Вернуться к списку
       </button>
 
-      {/* Информация о стране */}
       <h1 className="text-4xl font-bold mb-4">
         {country.emoji} {country.name}
       </h1>

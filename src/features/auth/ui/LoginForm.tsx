@@ -44,11 +44,10 @@ import {
       try {
         await submitLogin({ email, password });
   
-        // редирект после успешного входа
         const from = location.state?.from?.pathname || '/';
         navigate(from);
       } catch {
-        // ошибка уже обработана в сторах
+        // //
       }
     };
   

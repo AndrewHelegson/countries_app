@@ -25,7 +25,6 @@ import {
   
     const [searchParams, setSearchParams] = useSearchParams();
   
-    // ⬇️ Инициализируем фильтр из URL при первой загрузке
     useEffect(() => {
       const fromUrl = searchParams.get('continent');
       if (fromUrl) {
@@ -33,7 +32,6 @@ import {
       }
     }, []);
   
-    // ⬆️ Обновляем URL при изменении фильтра
     useEffect(() => {
       if (continent) {
         setSearchParams({ continent });

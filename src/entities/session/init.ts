@@ -1,4 +1,3 @@
-// src/entities/session/init.ts
 import { setAuth } from './model';
 
 export const initAuth = () => {

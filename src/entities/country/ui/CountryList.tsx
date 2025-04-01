@@ -19,22 +19,18 @@ export const CountryList = () => {
 
   const countries = data?.countries ?? [];
 
-  // 🔍 Фильтрация по континенту
   const filteredCountries = continent
     ? countries.filter((c) => c.continent.name === continent)
     : countries;
 
-  // 🔢 Пагинация
   const totalPages = Math.ceil(filteredCountries.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginated = filteredCountries.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
     <div className="p-4">
-      {/* 🔽 Выбор континента */}
       <ContinentSelect />
 
-      {/* 🗺 Сетка стран */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {paginated.map((country) => (
           <div
@@ -57,7 +53,6 @@ export const CountryList = () => {
         ))}
       </div>
 
-      {/* 📄 Пагинация */}
       <div className="flex justify-center">
         <Pagination
           count={totalPages}

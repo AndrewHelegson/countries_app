@@ -1,7 +1,6 @@
 import { createStore, createEvent, createEffect } from 'effector';
 import { setAuth } from '../../entities/session/model';
 
-// --- События и поля формы ---
 export const setEmail = createEvent<string>();
 export const setPassword = createEvent<string>();
 export const resetForm = createEvent();
@@ -14,13 +13,13 @@ export const $password = createStore('')
   .on(setPassword, (_, val) => val)
   .reset(resetForm);
 
-// --- Эффект логина ---
+// Эффект логина
 export const loginFx = createEffect<
   { email: string; password: string },
   string,
   Error
 >(async ({ email, password }) => {
-  // ⏳ эмуляция запроса (можно заменить на fetch или axios)
+  // эмуляция запроса (можно заменить на fetch или axios)
   await new Promise((r) => setTimeout(r, 800));
 
   if (email === 'admin@example.com' && password === '123456') {
@@ -31,12 +30,10 @@ export const loginFx = createEffect<
   throw new Error('Неверный email или пароль');
 });
 
-// --- Успешный логин — установить флаг авторизации ---
 loginFx.done.watch(() => {
   setAuth(true);
 });
 
-// --- Ошибка логина ---
 export const $loginError = createStore<string | null>(null)
   .on(loginFx.failData, (_, error) => error.message)
   .reset(loginFx, resetForm);
