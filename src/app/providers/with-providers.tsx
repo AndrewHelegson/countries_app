@@ -3,7 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
 import client from '../../shared/api/apollo-client';
 import { theme } from '../../shared/theme/theme';
 
